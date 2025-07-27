@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+@import "tailwindcss";
+
+.main {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 1rem;
+  transition: background-image 1s ease-in-out;
+}
+
+.main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0058d256, #78c7ff42);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -1;
+  filter: brightness(1.1);
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: floatParticles 60s linear infinite;
+  z-index: -1;
+}
+
+@keyframes floatParticles {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: slideDown 0.8s ease forwards;
+  filter: drop-shadow(0 0 20px rgba(241, 157, 32, 0.2));
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.4s forwards;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 600;
+  color: #e1efee;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(241, 157, 32, 0.1);
+}
+
+.subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 300;
+  color: #e1efee;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 220px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    max-width: 180px;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+}
+
+.contact {
+  margin-top: 3rem;
+  text-align: center;
+  color: #e1efee;
+}
+
+.contact h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f19d20;
+}
+
+.contact a {
+  color: #e1efee;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact a:hover {
+  color: #f19d20;
+}
+
+.contactSection {
+  padding: 3rem 1.5rem;
+  background: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+
+.contactTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #2d3748;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  resize: none;
+}
+
+.textarea {
+  height: 8rem;
+}
+
+.button {
+  padding: 0.75rem;
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1d4ed8;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: #2563eb;
+}
+
+.mapWrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
