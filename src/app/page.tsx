@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
   FaFacebookF,
@@ -30,6 +31,8 @@ function App() {
           (1000 * 60 * 60 * 24)
       ),
     };
+
+    
 
     return timeLeft;
   };
@@ -63,12 +66,43 @@ function App() {
     </div>
   );
 
+  const backgrounds = [
+  "/bonn1.jpeg",
+  "/bonn2.jpeg",
+  "/bonn3.jpeg",
+  "/bonn4.jpeg",
+];
+
+const [bgIndex, setBgIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setBgIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
+  }, 5000); // كل 5 ثواني
+  return () => clearInterval(interval);
+}, []);
+
   return (
-    <div className="container">
-      <h1 className="logo">BONN</h1>
-      <h2 className="main-text">Something Awesome Is In The Work</h2>
+    
+<div className="container">
+  {backgrounds.map((bg, index) => (
+    <div
+      key={index}
+      className="bg-image"
+      style={{
+        backgroundImage: `url(${bg})`,
+        opacity: index === bgIndex ? 1 : 0,
+        zIndex: index === bgIndex ? 0 : -1,
+      }}
+    ></div>
+  ))}
+    <div className="overlay"></div> 
+
+      <Image src="/logo.png" alt="logo" width="160" height="160" className="logo" style={{ position: "relative", zIndex: 101 }}/>
+      <h2 className="main-text">We’re crafting something BIG in Saudi beauty & innovation…</h2>
       <p className="sub-text">
-        We’ll be up and running soon with our new and improved website.
+        Get ready for a new standard in personal care & cosmetics manufacturing.
+The next generation of Saudi excellence—Bonn is almost here.
       </p>
 
       <div className="countdown">
@@ -99,38 +133,45 @@ path.CircularProgressbar-path {
 
 .container {
   position: relative;
-  min-height: 100%;
-  background-image: url("/bonnback.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow: hidden;
   color: #f2f2f2;
   text-align: center;
   padding: 40px 20px;
 }
 
-
-.container::before {
-  content: "";
+.bg-image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* <= overlay سوداء شفافة */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1.5s ease-in-out;
   z-index: 0;
 }
 
-.container > * {
-  position: relative;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* ظل أسود شفاف */
   z-index: 1;
 }
 
-  .logo {
-    font-size: 36px;
-    font-weight: bold;
-    color: #cce0ff;
-  }
+.container > *:not(.bg-image):not(.overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  z-index: 100;
+  position: relative;
+}
 
   .main-text {
     font-size: 24px;
