@@ -82,6 +82,23 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, []);
 
+const [email, setEmail] = useState("");
+const [submitted, setSubmitted] = useState(false);
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!email) return;
+
+  console.log("Submitted email:", email);
+
+  setSubmitted(true);
+  setEmail("");
+
+  setTimeout(() => {
+    setSubmitted(false);
+  }, 5000);
+};
+
   return (
     
 <div className="container">
@@ -112,10 +129,22 @@ The next generation of Saudi excellence—Bonn is almost here.
         {renderCircle(timeLeft.seconds, 60, "Seconds")}
       </div>
 
-      <div className="subscribe">
-        <input type="email" placeholder="Enter your email" />
-        <button>Submit</button>
-      </div>
+      <form className="subscribe" onSubmit={handleSubmit}>
+  <label className="submit-label">Be The First To Know</label>
+  <input
+    type="email"
+    placeholder="Enter your email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+  />
+  <button type="submit">Submit</button>
+</form>
+
+{submitted && (
+  <div className="success-message">
+    ✅ Thank you! Your email has been submitted successfully.
+  </div>
+)}
 
       <div className="social-icons">
         <a href="" className="link"><FaLinkedinIn /></a>
@@ -123,6 +152,11 @@ The next generation of Saudi excellence—Bonn is almost here.
         <a href="" className="link"><FaTwitter /></a>
         <a href="" className="link"><FaPhone /></a>
       </div>
+
+      <a href="/portfolio.pdf" download className="download-btn">
+   Download Portfolio
+</a>
+
 
       <footer>© Copyright 2025 | Bonn Medical Industries All Rights Reserved</footer>
 
@@ -173,6 +207,61 @@ path.CircularProgressbar-path {
   position: relative;
 }
 
+  .submit-label {
+    font-size: 14px;
+    color: #ffc107;
+    margin-right: 5px;
+  }
+
+  .subscribe input {
+  height: 30px;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    color: #c5daffff;
+    background-color: transparent;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+  }
+
+  .success-message {
+  margin-top: 10px;
+  color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.download-btn {
+  display: inline-block;
+  margin-top: 25px;
+  background-color: #ffc107;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #e0a800;
+}
+
+
   .main-text {
     font-size: 24px;
     margin: 20px 0;
@@ -209,17 +298,17 @@ path.CircularProgressbar-path {
 
   .subscribe {
     margin: 30px 0;
-  }
-
-  .subscribe input {
-    padding: 10px;
-    width: 250px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .subscribe button {
+    text-align: center;
+
+    width: 100px;
+    height: 30px;
+    margin-left: -10px;
     padding: 10px 20px;
     background: #007bff;
     color: white;
@@ -275,6 +364,7 @@ path.CircularProgressbar-path {
   .label {
     font-size: 12px;
   }
+    
 
   .subscribe input {
     width: 100%;
