@@ -193,7 +193,7 @@ path.CircularProgressbar-path {
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5); /* ظل أسود شفاف */
+  background: rgba(0, 0, 0, 0.5); 
   z-index: 1;
 }
 
@@ -306,18 +306,20 @@ path.CircularProgressbar-path {
   .subscribe button {
     text-align: center;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 1.5;
     width: 100px;
     height: 30px;
     margin-left: -10px;
-    padding: 10px 20px;
+    padding: 0 20px;
     background: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
   }
 
   .social-icons {
