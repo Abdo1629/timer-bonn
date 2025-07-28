@@ -364,7 +364,7 @@ path.CircularProgressbar-path {
     height: 20px;
   }
 
-  .label {
+  .submit-label {
     font-size: 12px;
   }
     
@@ -372,12 +372,16 @@ path.CircularProgressbar-path {
   .subscribe input {
     width: 100%;
     max-width: 250px;
-    margin-bottom: 10px;
   }
 
   .subscribe button {
     width: 100%;
-    max-width: 150px;
+    max-width: 80px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    font-size: 12px;
   }
 
   .label {
@@ -390,6 +394,16 @@ path.CircularProgressbar-path {
     gap: 15px;
     font-size: 20px;
   }
+}
+    @media (max-width: 425px) {
+    .subscribe input  {
+      width: 100%;
+      max-width: 230px;
+    }
+    
+    .submit-label {
+      font-size: 12px;
+    }
 }
 `}</style>
 
