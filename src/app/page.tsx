@@ -153,7 +153,7 @@ The next generation of Saudi excellence—Bonn is almost here.
         <a href="" className="link"><FaPhone /></a>
       </div>
 
-      <a href="/portfolio.pdf" download className="download-btn">
+      <a href="/BMI Profile.pdf" download className="download-btn">
    Download Portfolio
 </a>
 
@@ -305,7 +305,10 @@ path.CircularProgressbar-path {
 
   .subscribe button {
     text-align: center;
-
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
     width: 100px;
     height: 30px;
     margin-left: -10px;
