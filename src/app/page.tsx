@@ -16,7 +16,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 function App() {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2025-08-26T00:00:00+03:00").getTime();
+    const targetDate = new Date("2025-08-26T04:00:00+03:00").getTime();
     const now = new Date().getTime();
     const difference = targetDate - now;
 
