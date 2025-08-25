@@ -27,7 +27,7 @@ function App() {
       seconds: Math.floor((difference / 1000) % 60),
       totalDays: Math.floor(
         (targetDate -
-          new Date("2025-08-26T00:00:00+03:00").getTime()) /
+          new Date("2025-08-26T04:00:00+03:00").getTime()) /
           (1000 * 60 * 60 * 24)
       ),
     };
